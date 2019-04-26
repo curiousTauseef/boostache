@@ -13,6 +13,7 @@
 #include <boost/variant/variant.hpp>
 #include <map>
 #include <type_traits>
+#include <unordered_map>
 
 
 namespace boost { namespace boostache { namespace vm { namespace trait

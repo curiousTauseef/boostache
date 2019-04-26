@@ -13,6 +13,7 @@
 #include <boost/boostache/vm/traits.hpp>
 #include <boost/boostache/model/category.hpp>
 #include <type_traits>
+#include <unordered_map>
 #include <map>
 
 
@@ -38,6 +39,10 @@ namespace boost { namespace boostache { namespace extension
 
    template <typename T>
    struct render_category<std::map<std::string,T>>
+      : mpl::identity<associative_attribute> {};
+
+template <typename T>
+   struct render_category<std::unordered_map<std::string,T>>
       : mpl::identity<associative_attribute> {};
 
    template <typename T>

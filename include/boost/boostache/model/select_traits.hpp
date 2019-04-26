@@ -14,6 +14,7 @@
 #include <boost/boostache/model/category.hpp>
 #include <type_traits>
 #include <map>
+#include <unordered_map>
 #include <vector>
 
 
@@ -31,6 +32,7 @@ namespace boost { namespace boostache { namespace extension
                          >
       : mpl::identity<variant_attribute> {};
 
+      // Todo: is a not associative test needed instead?
    template <typename T>
    struct select_category< T
                          , vm::trait::enable_if_sequence_not_map_t<T>
@@ -43,6 +45,10 @@ namespace boost { namespace boostache { namespace extension
 
    template <typename T>
    struct select_category<std::map<std::string,T>>
+      : mpl::identity<associative_attribute> {};
+
+template <typename T>
+   struct select_category<std::unordered_map<std::string,T>>
       : mpl::identity<associative_attribute> {};
 
    template <typename T>
